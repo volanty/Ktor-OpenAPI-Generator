@@ -15,6 +15,7 @@ import com.papsign.ktor.openapigen.annotations.Response
 import com.papsign.ktor.openapigen.annotations.mapping.OpenAPIName
 import com.papsign.ktor.openapigen.annotations.parameters.HeaderParam
 import com.papsign.ktor.openapigen.annotations.parameters.PathParam
+import com.papsign.ktor.openapigen.annotations.parameters.QueryParam
 import com.papsign.ktor.openapigen.annotations.properties.description.Description
 import com.papsign.ktor.openapigen.annotations.type.`object`.example.ExampleProvider
 import com.papsign.ktor.openapigen.annotations.type.`object`.example.WithExample
@@ -280,7 +281,7 @@ object TestServer {
     class CustomException : Exception()
 
     @Path("string/{a}")
-    data class StringParam(@PathParam("A simple String Param") val a: String)
+    data class StringParam(@PathParam("A simple String Param") val a: String, @QueryParam("Optional String") val optional: String?)
 
     @Response("A String Response")
     data class StringResponse(@Description("The string value") val str: String)
